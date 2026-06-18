@@ -16,16 +16,6 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-// INFO: API endpoints
-app.use("/api/user", userRouter);
-app.use("/api/product", productRouter);
-app.use("/api/order", orderRouter);
-
-// INFO: Default route
-app.get("/", (req, res) => {
-  res.send("API is running on Vercel 🚀");
-});
-
 // INFO: Initialize services with proper async handling
 let dbConnected = false;
 
@@ -42,6 +32,16 @@ app.use(async (req, res, next) => {
     }
   }
   next();
+});
+
+// INFO: API endpoints
+app.use("/api/user", userRouter);
+app.use("/api/product", productRouter);
+app.use("/api/order", orderRouter);
+
+// INFO: Default route
+app.get("/", (req, res) => {
+  res.send("API is running on Vercel 🚀");
 });
 
 // ❌ DO NOT USE app.listen()

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify'
 
 const Orders = () => {
 
-  const {products, currency, user, navigate} = useContext(ShopContext);
+  const {products, currency, user, navigate, backendUrl} = useContext(ShopContext);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -19,7 +19,7 @@ const Orders = () => {
       try {
         setLoading(true);
         const token = localStorage.getItem('token');
-        const response = await fetch('http://localhost:4000/api/order/userorders', {
+        const response = await fetch(`${backendUrl}/api/order/userorders`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

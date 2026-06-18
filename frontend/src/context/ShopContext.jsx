@@ -142,7 +142,7 @@ const ShopContextProvider = (props) => {
   const placeOrder = async (orderData) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/api/order/place', {
+      const response = await fetch(`${backendUrl}/api/order/place`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -167,7 +167,7 @@ const ShopContextProvider = (props) => {
   const fetchOrders = async () => {
     try {
       const token = localStorage.getItem('token');
-      const response = await fetch('http://localhost:4000/api/order/userorders', {
+      const response = await fetch(`${backendUrl}/api/order/userorders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

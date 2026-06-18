@@ -7,7 +7,7 @@ import { ShopContext } from "../context/ShopContext";
 const Login = () => {
   const [currentState, setCurrentState] = useState("Sign Up");
   const navigate = useNavigate();
-  const { login } = useContext(ShopContext);
+  const { login, backendUrl } = useContext(ShopContext);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -28,7 +28,7 @@ const Login = () => {
         ? { email: formData.email, password: formData.password }
         : { name: formData.name, email: formData.email, password: formData.password };
 
-      const response = await fetch(`http://localhost:4000${endpoint}`, {
+      const response = await fetch(`${backendUrl}${endpoint}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
